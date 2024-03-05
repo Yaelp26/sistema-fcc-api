@@ -12,14 +12,22 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id','first_name','last_name', 'email')
 
-class ProfilesSerializer(serializers.ModelSerializer):
-    user=UserSerializer(read_only=True)
+class AlumnoSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     class Meta:
-        model = Profiles
-        fields = "__all__"
-class ProfilesAllSerializer(serializers.ModelSerializer):
-    #user=UserSerializer(read_only=True)
-    class Meta:
-        model = Profiles
+        model = Alumnos
         fields = '__all__'
-        depth = 1
+
+class MaestroSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Maestros
+        fields = '__all__'
+
+class AdminSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    class Meta:
+        model = Administradores
+        fields = '__all__'
+
+#Un serializer es un objeto tipo JSON que se usa para convertir datos de Django a JSON y viceversa, porque mediante http se convierte a una cadena de texto
